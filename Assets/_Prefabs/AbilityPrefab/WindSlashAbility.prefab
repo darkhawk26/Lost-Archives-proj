@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5199122953350424535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5996788437326608514}
+  - component: {fileID: 5128115100908460078}
+  m_Layer: 0
+  m_Name: WindSlashAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5996788437326608514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5199122953350424535}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20.451406, y: 12.141038, z: -0.302046}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5128115100908460078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5199122953350424535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7487bed9501e94b99e3abd56448d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityEffectPrefab: {fileID: 8975454707915911147, guid: 78ce26fd2e7d25c4680620c8434ca982, type: 3}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  abilityName: Wind Slash
+  abilityType: Projectile
+  abilityCooldown: 3
+  attackDamage: 15
+  abilityRange: 5
+  projectileSpeed: 10
+  damageReduction: 0
+  abilityDuration: 0
+  abilityKey: 101
