@@ -825,6 +825,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f510413d8a418f4cb75825d803d2406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleDrop: {fileID: 11400000, guid: 60cde3eb76c54c348b68743f1190a605, type: 2}
+  possibleDrops:
+  - {fileID: 11400000, guid: bb74a8c5aa9113b4abc438abd405eac1, type: 2}
+  - {fileID: 11400000, guid: 1154da443b6887d41a00f58a49f3f6a5, type: 2}
+  - {fileID: 11400000, guid: 60cde3eb76c54c348b68743f1190a605, type: 2}
+  - {fileID: 11400000, guid: b4b08625b5a3be8428609b5512d0e2db, type: 2}
+  - {fileID: 11400000, guid: 528a09df1a00aa4438b65ebc20b13892, type: 2}
+  - {fileID: 11400000, guid: 0f593255c58b6754e814a36be7ab51bb, type: 2}
+  - {fileID: 11400000, guid: 8e8775458269941428f528138ffc63cb, type: 2}
   dropChance: 0.1
   pickupPrefab: {fileID: 3028469701539930957, guid: f3f7ed96f1cde02459dc7518d647f67c, type: 3}

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e435b423a2d4af4bbc6fb18fcb21466, type: 3}
-  m_Name: Fiery Ring
+  m_Name: Ring of wisdom
   m_EditorClassIdentifier: 
-  artifactPickupPrefab: {fileID: 3028469701539930957, guid: f3f7ed96f1cde02459dc7518d647f67c, type: 3}
-  artifactName: Fiery Ring
-  icon: {fileID: 21300000, guid: a4659eeb4e388f64cafebd8c75f75b2e, type: 3}
-  description: 'Increases the range and damage of the ability Fire Ring '
-  targetAbilityName: Fire Ring
+  artifactPickupPrefab: {fileID: 3028469701539930957, guid: 37cf99020fd071e45a6835ac9b75a5c6, type: 3}
+  artifactName: Ring of Wisdom
+  icon: {fileID: 21300000, guid: 4249d93a931097649a112c55f5faa296, type: 3}
+  description: The ring of a forgotten magus filled with long lost wisdom
+  targetAbilityName: Wind Slash
   bonusDamage: 10
   bonusRange: 0
-  bonusSpeed: 0
+  bonusSpeed: 10
   bonusCooldown: 0
   bonusDuration: 0

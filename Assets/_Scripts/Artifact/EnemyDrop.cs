@@ -1,21 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyDrop : MonoBehaviour
 {
     private bool isQuitting = false;
 
-    public Artifact possibleDrop;
+    public List<Artifact> possibleDrops = new List<Artifact>();
     [Range(0, 1)] public float dropChance = 0.1f;
-    public GameObject pickupPrefab;
+ 
 
     public void DropArtifact()
     {
-        if (Random.value <= dropChance && possibleDrop != null)
+        List<Artifact> validDrops = possibleDrops.FindAll(artifact =>
+       artifact != null &&
+       !ArtifactManager.Instance.collectedArtifacts.Any(a => a.artifactName == artifact.artifactName)
+        );
+
+        
+        if (validDrops.Count > 0 && Random.value <= dropChance)
         {
-            GameObject pickup = Instantiate(pickupPrefab, transform.position, Quaternion.identity);
-            pickup.GetComponent<ArtifactPickup>().artifact = possibleDrop;
+            Artifact selectedDrop = validDrops[Random.Range(0, validDrops.Count)];
+
+            GameObject pickup = Instantiate(
+                selectedDrop.artifactPickupPrefab,
+                transform.position,
+                Quaternion.identity
+            );
+
+            pickup.GetComponent<ArtifactPickup>().artifact = selectedDrop;
         }
     }
     private void OnApplicationQuit()

@@ -46,7 +46,8 @@ public class ArtifactManager : MonoBehaviour
                     artifact.bonusDamage,
                     artifact.bonusRange,
                     artifact.bonusSpeed,
-                    artifact.bonusDuration
+                    artifact.bonusDuration,
+                    artifact.bonusCooldown
                 );
 
                 Debug.Log($"[ArtifactManager] Applied {artifact.artifactName} to {ability.abilityName}");

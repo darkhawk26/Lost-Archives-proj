@@ -96,12 +96,13 @@ public class Ability : MonoBehaviour
     }
 
 
-    public void ModifyAbility(float extraDamage, float extraRange, float extraSpeed, float extraDuration)
+    public void ModifyAbility(float extraDamage, float extraRange, float extraSpeed, float extraDuration, float bonusCooldown)
     {
         attackDamage += (int)extraDamage;
         abilityRange += extraRange;
         projectileSpeed += extraSpeed;
         abilityDuration += extraDuration;
+        abilityCooldown -= bonusCooldown;
 
         Debug.Log($"{abilityName} modified! New Stats: Damage={attackDamage}, Range={abilityRange}, Speed={projectileSpeed}, Duration={abilityDuration}");
     }

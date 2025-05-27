@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e435b423a2d4af4bbc6fb18fcb21466, type: 3}
-  m_Name: Fiery Ring
+  m_Name: Medalion Of Courage
   m_EditorClassIdentifier: 
-  artifactPickupPrefab: {fileID: 3028469701539930957, guid: f3f7ed96f1cde02459dc7518d647f67c, type: 3}
-  artifactName: Fiery Ring
-  icon: {fileID: 21300000, guid: a4659eeb4e388f64cafebd8c75f75b2e, type: 3}
-  description: 'Increases the range and damage of the ability Fire Ring '
+  artifactPickupPrefab: {fileID: 3028469701539930957, guid: f2374661995e15648b9c8726287b1789, type: 3}
+  artifactName: Medalion Of Courage
+  icon: {fileID: 21300000, guid: 71aecbf1ba334bf48bb33fb457a628a9, type: 3}
+  description: A medalion adorned with the gem of the lion
   targetAbilityName: Fire Ring
-  bonusDamage: 10
+  bonusDamage: 15
   bonusRange: 0
   bonusSpeed: 0
-  bonusCooldown: 0
+  bonusCooldown: 1
   bonusDuration: 0
