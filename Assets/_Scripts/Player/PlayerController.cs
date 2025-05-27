@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public List<Ability> abilities;
 
+
     private DatabaseManager db;
 
     public float moveSpeed;

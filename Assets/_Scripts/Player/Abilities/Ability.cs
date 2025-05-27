@@ -9,7 +9,8 @@ public class Ability : MonoBehaviour
 {
 
     public Transform shotPoint;
-    
+
+    private PlayerController playerController;
 
     public GameObject abilityEffectPrefab;
 
@@ -39,7 +40,8 @@ public class Ability : MonoBehaviour
         {
             Initialize(abilityName);
         }
-       
+
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     private void LoadAbilityStats()
@@ -153,16 +155,11 @@ public class Ability : MonoBehaviour
         }
 
         Debug.Log($"[DEBUG] Cooldown clear. Attempting to invoke {abilityName}");
-
        
         InvokeAbilityMethod(abilityName);
 
         isOnCooldown = true;
-
-        Debug.Log($"[DEBUG] Starting cooldown for {abilityCooldown} seconds");
-
         yield return new WaitForSeconds(abilityCooldown);
-
         isOnCooldown = false;
 
         Debug.Log("[DEBUG] Cooldown ended.");
@@ -171,11 +168,17 @@ public class Ability : MonoBehaviour
     public void ActivateFireRing()
     {
         Debug.Log($"Activating {abilityName}");
-
         
         if (abilityEffectPrefab != null)
         {
-            Instantiate(abilityEffectPrefab, transform.position, Quaternion.identity);
+            GameObject effectInstance = Instantiate(abilityEffectPrefab, transform.position, Quaternion.identity);
+
+           
+            Animator anim = effectInstance.GetComponent<Animator>();
+            if (anim != null)
+            {
+                anim.SetTrigger("Play");
+            }
         }
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, abilityRange, enemyLayer);
