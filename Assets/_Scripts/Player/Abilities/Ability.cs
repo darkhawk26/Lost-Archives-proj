@@ -31,6 +31,7 @@ public class Ability : MonoBehaviour
     private static float accumulatedAbilityDamage = 0f; 
     private static float ultimateThreshold = 400f; 
     private static bool ultimateReady = false;
+    public Slider slider;
 
     private bool isOnCooldown = false;
     private string dbPath;

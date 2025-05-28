@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-   
+    
     public int health;
     public int baseHealth;
     public int maxHealth;
@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour
     public float speed; 
     public float attackPower;
     public float baseAttackPower;
+    public static float accumulatedDamage;
     public List<Ability> abilities = new List<Ability>();
 
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
@@ -28,7 +29,10 @@ public class PlayerStats : MonoBehaviour
         LoadBaseStats();
 
         abilities = new List<Ability>(GetComponents<Ability>());
+
+        accumulatedDamage = maxHealth;
     }
+    
 
     public void ResetAbilities()
     {
@@ -46,7 +50,8 @@ public class PlayerStats : MonoBehaviour
             return;
 
         health -= amount;
-       
+        accumulatedDamage -= amount;
+
 
         if (health > 0)
         {
@@ -61,9 +66,12 @@ public class PlayerStats : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
     }
+    public static float GetCurrentHpProggres()
+    {
+        return accumulatedDamage;
+    }
     public void LoadBaseStats()
     {
-        
         baseHealth = db.GetHealth();
         baseSpeed = db.GetSpeed();
         baseAttackPower = db.GetAttackPower();

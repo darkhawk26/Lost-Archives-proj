@@ -833,5 +833,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 528a09df1a00aa4438b65ebc20b13892, type: 2}
   - {fileID: 11400000, guid: 0f593255c58b6754e814a36be7ab51bb, type: 2}
   - {fileID: 11400000, guid: 8e8775458269941428f528138ffc63cb, type: 2}
-  dropChance: 0.1
-  pickupPrefab: {fileID: 3028469701539930957, guid: f3f7ed96f1cde02459dc7518d647f67c, type: 3}
+  dropChance: 1
