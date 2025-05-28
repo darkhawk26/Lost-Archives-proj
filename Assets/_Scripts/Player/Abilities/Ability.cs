@@ -55,7 +55,7 @@ public class Ability : MonoBehaviour
         }
 
         playerController = FindObjectOfType<PlayerController>();
-        cooldownMask = transform.Find("OverlayMask").GetComponent<Image>();
+        
     }
 
     private void LoadAbilityStats()
