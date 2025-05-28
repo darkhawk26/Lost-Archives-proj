@@ -715,7 +715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: About
+  m_text: insructions
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21c124a8c2551ca4eb79dffb671b4bd5, type: 2}
   m_sharedMaterial: {fileID: -5236134949698919277, guid: 21c124a8c2551ca4eb79dffb671b4bd5, type: 2}
@@ -1432,7 +1432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 774016436}
   m_Layer: 5
-  m_Name: AboutMenu
+  m_Name: InstructionsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1823,7 +1823,7 @@ GameObject:
   - component: {fileID: 1203590211}
   - component: {fileID: 1203590210}
   m_Layer: 5
-  m_Name: AboutButton
+  m_Name: InstructionsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2336,7 +2336,7 @@ GameObject:
   - component: {fileID: 1547341666}
   - component: {fileID: 1547341665}
   m_Layer: 5
-  m_Name: AboutTitle
+  m_Name: InstructionsTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2358,8 +2358,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -11, y: 177}
-  m_SizeDelta: {x: -267.93372, y: -251.1178}
+  m_AnchoredPosition: {x: -11, y: 175}
+  m_SizeDelta: {x: -60.4443, y: -251.1178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1547341665
 MonoBehaviour:
@@ -2381,7 +2381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: about
+  m_text: instructions
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21c124a8c2551ca4eb79dffb671b4bd5, type: 2}
   m_sharedMaterial: {fileID: -5236134949698919277, guid: 21c124a8c2551ca4eb79dffb671b4bd5, type: 2}
@@ -2824,7 +2824,7 @@ GameObject:
   - component: {fileID: 1743958811}
   - component: {fileID: 1743958810}
   m_Layer: 5
-  m_Name: AboutInfo
+  m_Name: InstructionsInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

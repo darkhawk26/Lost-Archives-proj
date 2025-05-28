@@ -282,11 +282,17 @@ public class Ability : MonoBehaviour
             return;
         }
 
-        Debug.Log("Ultimate activated: Massive damage!");
+        
 
         if (abilityEffectPrefab != null)
         {
-            Instantiate(abilityEffectPrefab, transform.position, Quaternion.identity);
+            GameObject effectInstance = Instantiate(abilityEffectPrefab, transform.position, Quaternion.identity);
+
+            Animator anim = effectInstance.GetComponent<Animator>();
+            if (anim != null)
+            {
+                anim.SetTrigger("Cast");
+            }
         }
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, abilityRange, enemyLayer);

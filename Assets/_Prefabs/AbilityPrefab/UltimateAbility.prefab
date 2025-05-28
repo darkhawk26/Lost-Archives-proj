@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7487bed9501e94b99e3abd56448d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityEffectPrefab: {fileID: 0}
+  shotPoint: {fileID: 0}
+  abilityEffectPrefab: {fileID: 6697307381193848536, guid: d0ba3cbeb71f0174fb010e0c84f26a4c, type: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -57,3 +58,5 @@ MonoBehaviour:
   damageReduction: 0
   abilityDuration: 0
   abilityKey: 114
+  slider: {fileID: 0}
+  cooldownMask: {fileID: 0}
