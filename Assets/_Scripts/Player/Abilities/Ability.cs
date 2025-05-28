@@ -4,6 +4,7 @@ using Mono.Data.Sqlite;
 using System.Data;
 using System;
 using static UnityEngine.EventSystems.EventTrigger;
+using UnityEngine.UI;
 
 public class Ability : MonoBehaviour
 {
@@ -27,8 +28,20 @@ public class Ability : MonoBehaviour
     public float abilityDuration;
     public KeyCode abilityKey;
 
+    private static float accumulatedAbilityDamage = 0f; 
+    private static float ultimateThreshold = 400f; 
+    private static bool ultimateReady = false;
+
     private bool isOnCooldown = false;
     private string dbPath;
+
+    private float cooldownTimer = 0f;
+    public Image cooldownMask;
+
+    public float GetRemainingCooldown()
+    {
+        return Mathf.Max(0, cooldownTimer);
+    }
 
     void Start()
     {
@@ -42,6 +55,7 @@ public class Ability : MonoBehaviour
         }
 
         playerController = FindObjectOfType<PlayerController>();
+        cooldownMask = transform.Find("OverlayMask").GetComponent<Image>();
     }
 
     private void LoadAbilityStats()
@@ -146,24 +160,56 @@ public class Ability : MonoBehaviour
         }
     }
     public IEnumerator UseAbility()
-    {
-        Debug.Log($"[DEBUG] Ability {abilityName} from object: {gameObject.name}, tag: {gameObject.tag}, scene: {gameObject.scene.name}");
-
+    {   
         if (isOnCooldown)
         {
-            Debug.Log("[DEBUG] Ability is on cooldown, exiting.");
             yield break;
         }
 
-        Debug.Log($"[DEBUG] Cooldown clear. Attempting to invoke {abilityName}");
-       
+        if (abilityName.ToLower() == "ultimate" && !ultimateReady)
+        {
+            yield break;
+        }
+
         InvokeAbilityMethod(abilityName);
 
         isOnCooldown = true;
+        cooldownTimer = abilityCooldown;
+        if (cooldownMask != null)
+            StartCoroutine(CooldownVisualRoutine());
+
+        while (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+            yield return null;
+        }
+
         yield return new WaitForSeconds(abilityCooldown);
         isOnCooldown = false;
 
         Debug.Log("[DEBUG] Cooldown ended.");
+    }
+    private IEnumerator CooldownVisualRoutine()
+    {
+        float cooldown = abilityCooldown;
+        float timeLeft = cooldown;
+
+        while (timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+
+            if (cooldownMask != null)
+                cooldownMask.fillAmount = timeLeft / cooldown;
+
+     
+
+            yield return null;
+        }
+
+        if (cooldownMask != null)
+            cooldownMask.fillAmount = 0;
+
+        
     }
 
     public void ActivateFireRing()
@@ -187,7 +233,17 @@ public class Ability : MonoBehaviour
         foreach (Collider2D enemy in enemies)
         {
             enemy.GetComponent<Health>().TakeDamageFromAbilities(attackDamage);
+            accumulatedAbilityDamage += attackDamage;
+           
+
+            if (accumulatedAbilityDamage >= ultimateThreshold)
+            {
+                ultimateReady = true;
+                Debug.Log("[Ultimate] READY!");
+            }
         }
+
+       
     }
 
 
@@ -201,21 +257,51 @@ public class Ability : MonoBehaviour
         GameObject slash = Instantiate(abilityEffectPrefab, shotPoint.position, shotPoint.rotation);
         Rigidbody2D rb = slash.GetComponent<Rigidbody2D>();
         Projectile projectile = slash.GetComponent<Projectile>();
+       
+        accumulatedAbilityDamage += attackDamage;
+        if (accumulatedAbilityDamage >= ultimateThreshold)
+        {
+            ultimateReady = true;
+            Debug.Log("[Ultimate] READY!");
+        }
         if (projectile != null)
         {
             projectile.Initialize(attackDamage, projectileSpeed, abilityRange, enemyLayer);
         }
-        projectile.Initialize(attackDamage, projectileSpeed, abilityRange, enemyLayer);
+       
         rb.AddForce(shotPoint.right * projectileSpeed, ForceMode2D.Impulse);
 
     }
     
     private void ActivateUltimate()
     {
-        
-        Debug.Log("Ultimate activated: Massive damage!");
-    }
+        if (!ultimateReady)
+        {
+            Debug.Log("[Ultimate] Not ready!");
+            return;
+        }
 
+        Debug.Log("Ultimate activated: Massive damage!");
+
+        if (abilityEffectPrefab != null)
+        {
+            Instantiate(abilityEffectPrefab, transform.position, Quaternion.identity);
+        }
+
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, abilityRange, enemyLayer);
+        foreach (Collider2D enemy in enemies)
+        {
+            enemy.GetComponent<Health>().TakeDamageFromAbilities(attackDamage);
+        }
+
+     
+        accumulatedAbilityDamage = 0f;
+        ultimateReady = false;
+    }
+    public static float GetCurrentUltimateProgress()
+    {
+        return accumulatedAbilityDamage;
+    }
     void OnDrawGizmosSelected()
     {
         

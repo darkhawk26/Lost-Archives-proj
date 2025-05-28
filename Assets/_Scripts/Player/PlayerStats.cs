@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+   
     public int health;
     public int baseHealth;
     public int maxHealth;
@@ -44,6 +46,7 @@ public class PlayerStats : MonoBehaviour
             return;
 
         health -= amount;
+       
 
         if (health > 0)
         {
